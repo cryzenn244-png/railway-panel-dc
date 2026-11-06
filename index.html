@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>AuraBot Panel</title><link rel="stylesheet" href="/style.css">
+</head>
+<body>
+<div class="orb orb1"></div><div class="orb orb2"></div>
+<main id="loginView" class="login-wrap">
+  <section class="login-card glass">
+    <div class="brand-mark">A<span>✦</span></div>
+    <p class="eyebrow">AURA SYSTEMS / BOT CLOUD</p><h1>Welcome back<span class="accent">.</span></h1>
+    <p class="muted">Your Discord bot workspace, in one place.</p>
+    <form id="loginForm"><label>Username<input name="username" autocomplete="username" value="admin" required></label>
+    <label>Password<input name="password" type="password" autocomplete="current-password" placeholder="Your admin password" required></label>
+    <button class="primary wide">Enter dashboard <span>↗</span></button><p id="loginError" class="error"></p></form>
+    <div class="login-foot"><span class="dot"></span> Private workspace · Secure session</div>
+  </section>
+</main>
+<div id="appView" class="app hidden">
+  <aside class="sidebar glass">
+    <div class="brand"><div class="brand-mark small">A<span>✦</span></div><div><b>AuraBot</b><small>CONTROL PANEL</small></div></div>
+    <div class="side-label">WORKSPACE</div><button class="nav active" data-page="overview">◈ <span>Overview</span></button>
+    <button class="nav" data-page="bots">▣ <span>Bot instances</span></button>
+    <div class="side-bottom"><div class="profile"><div class="avatar">A</div><div><b>Administrator</b><small>Owner access</small></div></div><button id="logoutBtn" class="logout">↪ Sign out</button></div>
+  </aside>
+  <section class="content">
+    <header><div><p class="eyebrow">AURABOT / CONTROL CENTER</p><h1 id="pageTitle">Overview<span class="accent">.</span></h1><p class="muted" id="pageDesc">Your bots, files and runtime at a glance.</p></div><div class="header-right"><span class="status-pill"><i></i> Panel online</span><div class="avatar">A</div></div></header>
+    <section id="overviewPage">
+      <div class="hero glass"><div><span class="tag">✦ BOT OPERATIONS</span><h2>Build something<br><em>extraordinary.</em></h2><p>Manage your Discord bot projects from one clean workspace.</p><button id="heroCreate" class="primary">＋ Create a bot</button></div><div class="hero-art"><div class="ring ring1"></div><div class="ring ring2"></div><div class="cube">A<span>✦</span></div><div class="float-chip">● Runtime ready</div></div></div>
+      <div class="stats"><article class="stat glass"><div class="stat-icon">▣</div><p>BOT INSTANCES</p><strong id="botCount">0</strong><small>Created workspaces</small></article><article class="stat glass"><div class="stat-icon green">●</div><p>RUNNING</p><strong id="runningCount">0</strong><small>Active processes</small></article><article class="stat glass"><div class="stat-icon blue">↥</div><p>UPLOAD LIMIT</p><strong id="uploadLimit">50 MB</strong><small>Per uploaded file</small></article></div>
+      <div class="section-head"><div><h2>Your workspaces</h2><p class="muted">Quick access to your latest bot projects.</p></div><button class="ghost" id="viewAll">View all ↗</button></div><div id="recentBots" class="bot-grid"></div>
+    </section>
+    <section id="botsPage" class="hidden"><div class="section-head"><div><h2>Bot instances</h2><p class="muted">Create a workspace, upload your project, then launch it.</p></div><button id="createBtn" class="primary">＋ New bot</button></div><div id="allBots" class="bot-grid"></div></section>
+    <section id="detailPage" class="hidden">
+      <div class="detail-top"><button id="backBtn" class="ghost">← All bots</button><div class="detail-actions"><button id="startBtn" class="primary">▶ Start</button><button id="stopBtn" class="danger">■ Stop</button></div></div>
+      <div class="detail-layout"><div class="panel glass"><div class="panel-head"><div><p class="eyebrow">INSTANCE WORKSPACE</p><h2 id="detailName">Bot</h2></div><span id="detailStatus" class="status-pill"><i></i> Stopped</span></div>
+      <div class="upload-box"><div class="upload-icon">↥</div><h3>Upload your project</h3><p>ZIP archives or individual files · up to <b id="uploadLimit2">50 MB</b> each</p><input id="fileInput" type="file" multiple><button id="uploadBtn" class="primary">Upload files</button><p class="muted tiny">ZIP files are checked for unsafe paths. Existing files are never overwritten.</p></div>
+      <div class="panel-head files-head"><h3>Project files</h3><button id="refreshFiles" class="ghost">↻ Refresh</button></div><div id="fileList" class="file-list"></div>
+      <div class="launch-row"><label>Entry file<input id="entryFile" value="index.js" placeholder="index.js"></label><p class="muted tiny">Supports Node.js (.js/.cjs) and Python (.py), if installed by the host.</p></div></div>
+      <div class="panel glass console-panel"><div class="panel-head"><div><p class="eyebrow">LIVE OUTPUT</p><h3>Console</h3></div><button id="refreshLogs" class="ghost">↻</button></div><div id="consoleOutput" class="console"><span class="console-muted">Logs will appear here when the bot starts.</span></div><div class="console-foot"><span><i class="dot"></i> Process output</span><span>Last 300 lines</span></div></div></div>
+    </section>
+    <footer>© 2026 AuraBot Panel <span>Built for your bot workflow</span></footer>
+  </section>
+</div>
+<div id="modal" class="modal hidden"><form id="createForm" class="modal-card glass"><button type="button" id="closeModal" class="close">×</button><p class="eyebrow">NEW WORKSPACE</p><h2>Create a bot<span class="accent">.</span></h2><p class="muted">Give your bot project a name to get started.</p><label>Bot name<input name="name" placeholder="e.g. community-bot" required maxlength="40"></label><button class="primary wide">Create workspace</button><p id="createError" class="error"></p></form></div>
+<div id="toast" class="toast"></div>
+<script src="/app.js" defer></script>
+</body></html>
